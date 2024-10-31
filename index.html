@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head style="background-color: brown;">
+  <style style="background-color: brown;">
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #000;
+    }
+
+    #calculator {
+      width: 300px;
+      margin: 0 auto;
+      border: 2px solid #333;
+      border-radius: 10px;
+      padding: 10px;
+      background-color: red;
+      box-shadow: 5px 5px 10px #666;
+    }
+
+    #screen {
+      text-align: right;
+      font-size: 24px;
+      margin-bottom: 10px;
+      padding: 5px;
+      overflow: hidden;
+      color: white;
+    }
+
+    #buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 5px;
+    }
+
+    .button {
+      font-size: 20px;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid #666;
+      border-radius: 5px;
+      color: #000;
+      transition: transform 0.3s;
+      box-shadow: 0 5px #666;
+    }
+
+    .button:hover {
+      transform: translateY(2px);
+      box-shadow: 0 3px #666;
+    }
+  </style>
+</head>
+<body style="background-image: url(v.jfif);">
+  <div id="calculator">
+    <div style="color: #000;" id="screen">Mateo M'B</div>
+    <div id="buttons">
+      <div class="button" onclick="appendToScreen('7')">7</div>
+      <div class="button" onclick="appendToScreen('8')">8</div>
+      <div class="button" onclick="appendToScreen('9')">9</div>
+      <div class="button" onclick="appendToScreen('/')">/</div>
+      <div class="button" onclick="appendToScreen('4')">4</div>
+      <div class="button" onclick="appendToScreen('5')">5</div>
+      <div class="button" onclick="appendToScreen('6')">6</div>
+      <div class="button" onclick="appendToScreen('*')">*</div>
+      <div class="button" onclick="appendToScreen('1')">1</div>
+      <div class="button" onclick="appendToScreen('2')">2</div>
+      <div class="button" onclick="appendToScreen('3')">3</div>
+      <div class="button" onclick="appendToScreen('-')">-</div>
+      <div class="button" onclick="clearScreen()">C</div>
+      <div class="button" onclick="appendToScreen('0')">0</div>
+      <div class="button" onclick="calculate()">=</div>
+      <div class="button" onclick="appendToScreen('+')">+</div>
+    </div>
+  </div>
+
+  <script>
+    let screen = document.getElementById('screen');
+    let currentInput = '';
+
+    function appendToScreen(value) {
+      currentInput += value;
+      screen.innerHTML = currentInput;
+    }
+
+    function clearScreen() {
+      currentInput = '';
+      screen.innerHTML = 'MATEO MB';
+    }
+
+    function calculate() {
+      try {
+        currentInput = eval(currentInput);
+        screen.innerHTML = currentInput;
+        if (screen.offsetWidth > screen.scrollWidth) {
+          screen.style.fontSize = '16px';
+        }
+      } catch (error) {
+        screen.innerHTML = 'Error';
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+
